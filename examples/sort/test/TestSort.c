@@ -23,14 +23,11 @@ TEST(Sort, TestSort1)
     int in_vector[vector_size]; // Vetor de entrada
     int out_vector[vector_size]; // Vetor de saida
 
-    // Inicialização com pior caso
+    // Inicialização com pior caso, ordem decrescente
     for (i=0 ; i<vector_size; i++){
         in_vector[i] = vector_size-i;
+        out_vector[i] = vector_size-i;
     }
-
-    // All of these should pass
-    //TEST_ASSERT_EQUAL(-2, sort(1,2));
-    //TEST_ASSERT_EQUAL(-1, sort(2,2));
 
     // Print dos valores de entrada
     printf("\n\tInput vector:");
@@ -39,12 +36,7 @@ TEST(Sort, TestSort1)
     }
     printf("\n");
 
-
-
-    //TEST_ASSERT_EQUAL(-2, sort(1,2));
-
-    //TEST_ASSERT_EQUAL(-2, sort(1,2));
-    //TEST_ASSERT_EQUAL(-1, sort(2,2));
+    sort(out_vector, vector_size);
 
     // Print dos valores ordenados
     printf("\n\tSorted vector:");
@@ -52,6 +44,11 @@ TEST(Sort, TestSort1)
        printf("%d ", out_vector[n]);
     }
     printf("\n");
+
+    // All of these should pass
+    for(n=0;n<vector_size;n++) {
+        TEST_ASSERT_EQUAL(in_vector[n], out_vector[vector_size-n-1]);
+    }
 }
 
 TEST(Sort, TestSort2)
